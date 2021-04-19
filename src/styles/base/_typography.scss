@@ -1,0 +1,12 @@
+@import '_variables';
+
+html,
+body {
+  font-size: 16px !important;
+  font-family: $font-family !important;
+  -webkit-font-smoothing: antialiased;
+}
+
+b {
+  font-weight: $font-weight-medium;
+}

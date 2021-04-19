@@ -1,0 +1,96 @@
+@import '../../../../styles/base/_component-manifest.scss';
+.qm-modal {
+    &__sub-header {
+        &-dob {
+            .qm-standard-text-field__required {
+                padding-left: 14.5em;
+                font-weight: 400;
+            }
+        }
+    }
+}
+
+.qm-clear-input-button {
+    position: absolute;
+}
+
+.qm-lang-flex {
+    display: flex;
+    font-size: 0.875rem;
+    line-height: 1rem;
+    color: rgba(0, 0, 0, 0.62);
+    margin-bottom: 5px;
+}
+
+.qm-input-date {
+    &__container {
+        display: flex;
+    }
+}
+
+.qm-date-picker {
+    width: 100%;
+
+    &__select {
+        width: 45%;
+    } 
+
+    &__select-extend {
+        width: 60%;
+    }
+}
+
+.qm-time-picker {
+    margin-left: 7%;
+    margin-top: -6%;
+}
+
+::ng-deep .cdk-overlay-container {
+    z-index:2000;
+  }
+
+  ::ng-deep .btn-link {
+    color: $secondary-color;
+  }
+
+  ::ng-deep .btn-link:hover {
+    color: #037351;
+  }
+
+  ::ng-deep .btn-outline-primary {
+    color: $secondary-color;
+    border-color: $secondary-color;
+  }
+
+  ::ng-deep .btn-outline-primary:hover {
+    color: #fff;
+    background-color: $secondary-color;
+    border-color: $secondary-color;
+  }
+
+  ::ng-deep .mat-calendar-body-selected {
+      background-color: $secondary-color;
+  }
+
+  ::ng-deep .mat-focused .mat-form-field-label {
+    /*change color of label*/
+    color:  $secondary-color !important;
+   }
+  
+   ::ng-deep.mat-form-field-underline {
+    /*change color of underline*/
+    background-color:  $secondary-color !important;
+  } 
+  
+  ::ng-deep.mat-form-field-ripple {
+   /*change color of underline when focused*/
+   background-color:  $secondary-color !important;;
+  }
+
+  ::ng-deep .mat-form-field-flex {
+    align-items: center !important;
+  }
+  
+  mat-datepicker-toggle {
+    color:  $secondary-color !important;
+  }

@@ -1,0 +1,21 @@
+<div class="qm-modal qm-done-modal qm-form-modal qm-modal--md" [dir]="userDirection$ | async" cdkTrapFocus>
+  <form class="qm-modal__box-container modal-container">
+    <div class="qm-modal__header">
+        <!-- <i class="qm-action-btn__icon qm-done-modal__header-icon" [ngClass]="{'icon-done-rtl': userDirection == 'rtl' || userDirection == 'RTL', 'icon-done-solid': userDirection == 'ltr' || userDirection == 'LTR'}" aria-hidden="true"></i> -->
+      <span id="qm-modal__headline" tabindex="-1" class="qm-modal__headline">{{ (heading) | translate }}</span>
+    </div>
+    <div class="qm-done-modal__subheader">
+      {{ (subHeading) | translate }}
+    </div>
+    <div class="qm-modal__footer footer-container__footer">
+      <div class="footer-container__devider"></div>
+      <div class="qm-generic-layout footer-container">   
+        <button class="qm-btn qm-btn--primary qm-btn-finish" (click)="goBackHome()">
+          <span class="qm-btn__text" title="{{ 'button.invalid.access.home' | translate }}">
+            {{ 'button.invalid.access.home' | translate }}
+          </span>
+        </button>
+      </div>
+    </div>
+  </form>
+</div>

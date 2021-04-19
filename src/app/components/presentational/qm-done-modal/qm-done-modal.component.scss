@@ -1,0 +1,65 @@
+.modal-checkbox{
+    padding-top: 1.5rem;
+    padding-bottom: 1rem;
+    @at-root [dir="ltr"] & {
+        margin-left: -10px;
+    }
+    @at-root [dir="rtl"] & {
+        margin-right: -10px;
+    }
+
+    &__label{
+        height: 2rem;
+    }
+}
+
+.footer-container{
+    flex-direction: column;
+    align-items: center;
+
+    &__devider{
+        height: 0.5px;
+        background-color: rgba(0, 0, 0, 0.12);
+        padding-top: 1px;
+    }
+    
+    &__footer{
+        margin-top: 3rem;
+    }
+}
+
+.button-container{
+    position: absolute;
+    top: 1rem;
+    display: flex;
+    @at-root [dir="ltr"] & {
+        right: 1rem;
+    }
+    @at-root [dir="rtl"] & {
+        left: 1rem;
+    }
+}
+
+.close-button {
+    position: relative;
+    top: 0rem;
+    right: 0rem;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.modal-checkbox-backdrop{
+    margin-left: -8.3rem;
+    margin-top: -0.4rem;
+    position: relative;
+    @at-root [dir="ltr"] & {
+        margin-left: -8.3rem;
+    }
+    @at-root [dir="rtl"] & {
+        margin-right: -7.9rem;
+    }
+}
+
+.modal-container{
+    padding-top: 3rem;
+}

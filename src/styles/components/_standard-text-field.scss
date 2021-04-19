@@ -1,0 +1,96 @@
+.qm-standard-text-field {
+  @at-root [dir='rtl'] & {
+    text-align: right;
+
+
+    [type="tel"] {
+      text-align: right;
+    }
+  }
+
+  &__label {
+    width: 100%;
+  }
+
+  &__top-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: rem(5px);
+  }
+
+  &__text {
+    font-size: rem(14px);
+    line-height: rem(16px);
+    color: $dark-transparent62;
+  }
+
+  &__required {
+    font-size: rem(12px);
+    line-height: rem(16px);
+    color: $secondary-color;
+  }
+
+  &__input-container {
+    display: block;
+    position: relative;
+  }
+
+  &__input {
+    width: 100%;
+    font-size: rem(18px);
+    font-weight: $font-weight-light;
+    height: rem(42px);
+
+    &[disabled] {
+      background: $disabled-background;
+    }
+  }
+
+  &__input.clear-enabled-input {
+    padding-right: rem($standard-padding * 2);
+
+    @at-root [dir='rtl'] & {
+      padding-right: rem(12px);
+      padding-left: rem($standard-padding * 2);
+    }
+  }
+
+  &__error-message {
+    display: inline-block;
+    // visibility: hidden;
+    font-size: rem(12px);
+    line-height: rem(16px);
+    color: $primary-color;
+    min-height: rem(16px);
+    min-width: 1px;
+  }
+
+  // Modifiers
+
+  &--large {
+    .qm-standard-text-field__label {
+      max-width: rem(270px);
+    }
+
+    .qm-standard-text-field__text {
+      color: $dark-transparent82;
+      font-size: rem(18px);
+      line-height: rem(24px);
+    }
+
+    .qm-standard-text-field__top-container {
+      margin-bottom: rem($standard-margin / 2);
+    }
+  }
+
+  &--error {
+    .qm-standard-text-field__input {
+      border: 2px solid $primary-color;
+    }
+
+    .qm-standard-text-field__error-message {
+      visibility: visible;
+    }
+  }
+}

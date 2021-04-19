@@ -1,0 +1,106 @@
+@import './_component-manifest.scss';
+
+// Bootstrap overrides
+.modal-content {
+  border: 0;
+  border-radius: $standard-border-radius;
+  box-shadow: $standard-box-shadow;
+}
+
+// Combobox dropdown
+// Opened
+.ng-select-single.ng-select.ng-select-opened>.ng-select-container .ng-arrow {
+  border: 0;
+  top: 2px;
+  width: rem(24px);
+  height: rem(24px);
+  &:before {
+    content: "\e905";
+    font-size: rem($base-unit * 1.4);
+  }
+}
+// Closed
+.ng-select.ng-select-single .ng-arrow-wrapper .ng-arrow {
+  border: 0;
+  width: rem(24px);
+  height: rem(24px);
+  top: 2px;
+  &:before {
+    content: "\e902";
+    @include icomoon-styles;
+    font-size: rem($base-unit * 1.4);
+  }
+}
+
+.ng-select.ng-select-single .ng-select-container {
+  height: rem(42px);
+  border-color: $standard-border-color;
+}
+
+.ng-select .ng-select-container {
+  border-radius: 0;
+}
+
+.ng-select .ng-arrow-wrapper {
+  width: 28px;
+}
+
+.ng-select .ng-select-container .ng-value-container .ng-placeholder {
+  font-weight: $font-weight-light;
+  color: $dark-transparent62;
+}
+
+.ng-dropdown-panel .ng-dropdown-panel-items .ng-option.ng-option-marked {
+  background-color: $dark-transparent04;
+}
+
+.ng-select .ng-value-label {
+  font-weight: $font-weight-light;
+}
+
+.ng-dropdown-panel .ng-dropdown-panel-items .ng-option.ng-option-selected {
+  background: $list-item-hover-color;
+}
+
+.ng-dropdown-panel .ng-dropdown-panel-items .ng-option.ng-option-selected .ng-option-label {
+  font-weight: $font-weight-normal;
+}
+
+.ng-dropdown-panel .ng-dropdown-panel-items .ng-option {
+  font-weight: $font-weight-light;
+  @at-root [dir='rtl'] & {
+    text-align: right;
+  }
+}
+
+.ng-dropdown-panel {
+  @at-root [dir='rtl'] & {
+    left: 0;
+  }
+}
+
+.ng-select.ng-select-single .ng-select-container .ng-value-container .ng-input {
+  @at-root [dir='rtl'] & {
+    padding-right: 10px;
+    padding-left: 50px;
+  }
+}
+
+.ng-select .ng-select-container .ng-value-container {
+  @at-root [dir='rtl'] & {
+    padding-right: 10px;
+    padding-left: 0;
+  }
+}
+
+.ng-select .ng-arrow-wrapper {
+  @at-root [dir='rtl'] & {
+    padding-left: 5px;
+    padding-right: 0;
+  }
+}
+
+// Bootstrap tooltip
+.tooltip .tooltip-inner {
+  width: 260px;
+}

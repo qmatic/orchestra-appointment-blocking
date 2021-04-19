@@ -1,0 +1,15 @@
+@import '../../../../styles/base/_component-manifest.scss';
+
+.license-message {
+  display: flex;
+  margin: 0 auto;
+
+  &__invalid-text {
+    display: inline-flex;
+    align-items: center;
+    font-size: rem(22px);
+    color: $white;
+    font-weight: $font-weight-regular;
+    text-align: center;
+  }
+}

@@ -1,0 +1,156 @@
+@import '../../../../styles/base/_component-manifest.scss';
+
+:host {
+  width: 100%;
+  z-index: map-get($z-index, "header");
+}
+
+.qm-header {
+  display: flex;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: $global-header-height;
+  justify-content: space-between;
+  background: $header-background-color;
+  padding: rem(0 24px);
+  z-index: map-get($z-index, "header");
+
+  &__left {
+    display: flex;
+    flex: 0 1 auto;
+    align-items: center;
+  }
+
+  &__right {
+    display: flex;
+    flex: 0 1 auto;
+    text-align: right;
+    align-items: center;
+  }
+
+
+
+@mixin top-bar-button-common {
+    height: 27px;
+    color: $light-transparent50;
+
+    .qm-action-btn__icon {
+      font-size: rem(26px);
+    }
+
+    &:visited {
+      color: $light-transparent50;
+    }
+
+    &:hover,
+    &:focus,
+    &:active {
+      color: $white;
+      text-decoration: none;
+    }
+}
+
+&__home-btn,
+&__help-btn,
+&__logout-btn {
+  flex: 1 0 24px;
+  @include top-bar-button-common;
+}
+
+&__settings-btn, &__settings-back-btn{
+  flex: 1 0 auto;
+  @include top-bar-button-common;
+}
+
+
+  &__settings-back-btn {
+    display: inline-flex;
+    font-size: rem(16px);
+    font-weight: $font-weight-regular;
+    align-items: center;
+    margin-right: rem($standard-margin* 2);
+
+    @at-root [dir='rtl'] & {
+      margin-right: 0;
+      margin-left: rem($standard-margin * 2);
+    }
+
+    span {
+      display: block;
+    }
+  }
+
+  &__settings-btn {
+    display: inherit;
+    align-items: flex-start;
+    font-size: 16px;
+    span {
+      padding: 0px 7px;
+      align-self: center;
+    }
+  }
+
+  // Left side
+  &__brand-logo-container {
+    display: flex;
+    flex: 1 0 auto;
+    align-items: center;
+    margin-left: rem($standard-margin);
+
+    @at-root [dir='rtl'] & {
+      margin-left: 0;
+      margin-right: rem($standard-margin);
+    }
+  }
+
+  &__brand-logo {
+    width: 75px;
+  }
+
+  &__application-name {
+    flex: 1 1 auto;
+    align-self: center;
+    font-size: rem(21px);
+    line-height: rem(27px);
+    color: $white;
+    margin-left: rem($standard-margin);
+
+    @at-root [dir='rtl'] & {
+      margin-left: 0;
+      margin-right: rem($standard-margin);
+    }
+  }
+
+  // Right side
+  &-help-btn {
+    margin: rem($standard-margin / 2);
+  }
+
+  &__user-name {
+    flex: 1 1 auto;
+    color: $light-transparent75;
+    margin: rem(0 $standard-margin / 2);
+  }
+
+  &__settings-admin-active {
+    display: none;
+    visibility: hidden;
+  }
+
+
+}
+
+@media screen and (min-width: #{map-get($grid-breakpoints, 'lg')}) {
+  .qm-header {
+    &__brand-logo {
+      width: 95px;
+    }
+  }
+}
+
+@media print {
+  .qm-header {
+    visibility: hidden;
+  };
+}
