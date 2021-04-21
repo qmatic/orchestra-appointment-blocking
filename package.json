@@ -1,7 +1,7 @@
 {
   "name": "appointment-blocking",
   "version": "2.0.0",
-  "build": "2",
+  "build": "3",
   "license": "MIT",
   "scripts": {
     "start": "npm run ng-config-dev && ng serve --host 0.0.0.0 --proxy-config proxy.config.json",
@@ -52,7 +52,7 @@
     "web-animations-js": "^2.3.2",
     "zone.js": "~0.10.2",
     "core-js": "^2.4.1",
-    "@angular/material": "^10.2.7",
+    "@angular/material": "^11.2.9",
     "@angular/material-moment-adapter": "^11.2.7"
   },
   "devDependencies": {

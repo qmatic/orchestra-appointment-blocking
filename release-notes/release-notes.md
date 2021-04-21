@@ -39,6 +39,27 @@ This document describes the new features, bug corrections, known issues and reco
 
 ------------>
 
+<h2>Update 2.0.0.3 </h2>
+
+**Date: 21/4/2021**
+ 
+**Build number: 3**
+
+<h3>Stories</h3>
+
+| **Id** | **Release notes** |
+| --- | --- |
+| **ABL-15** | **Appointment Blocking, Provide basis for customer documentation** Update README file |
+
+<h3>Bug fixes</h3>
+
+| **Id** | **Release notes** |
+| --- | --- |
+| **000000** | **Handle 401 unauthorized user** |
+
+----------
+
+
 <h2>Original release</h2>
 
 **Date: 09/04/2021** 

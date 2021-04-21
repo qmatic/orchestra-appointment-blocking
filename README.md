@@ -31,12 +31,13 @@ Make sure you have installed
 - [Installation](#installation)
 - [Development](#development) 
 - [Production Build](#production-build) 
+- [Deployment Guide](#deployment-guide) 
 - [Further help](#further-help) 
   
 ## Installation
 BEFORE YOU INSTALL: please read the [Prerequisites](#prerequisites)
 
-Clone the Mobile Ticket Solution
+Clone the Appointment Blocking Solution
 ```
 git clone https://github.com/qmatic/orchestra-appointment-blocking.git
 ```
@@ -72,7 +73,29 @@ Release notes are located in **/release-notes**
 Run `npm run build-artifactory` to build the project. The build artifacts will be stored in the `dist/` directory.
 
 The build number is taken from `src/app.json`
+## Deployment Guide
+ ### Configuaration
+ * Add a record for application and application_modules table
 
+    INSERT INTO qp_central.applications
+    (id,branch_app,is_distributed,enabled,icon_url,url,version,view_index)
+    VALUES('appointmentblocking',true,false,1,'images/icons/application.png','appointmentblocking',1,120)
+
+    INSERT INTO qp_central.application_modules     
+     (id,is_distributed,enabled,icon_url,privilege_level,url,view_index,application_id)
+     VALUES ('appointmentblocking',0,1,NULL,20,NULL,110,'appointmentblocking')
+
+ * Add new section to commonMessages.properties 
+application.appointmentblocking                  = Appointment Blocking
+application.appointmentblocking.description      = Appointment Blocking Workstation
+module.appointmentblocking                       = Appointment Blocking
+
+ * Create new role for Appointment Blocking and add Appointment Blocking module, Appointment, Calendar Admin and Connector EntryPoint to it.
+
+ * Copy "appointmentblocking.war" to the "custdeploy" folder of Orchestra and restart the service.
+
+ Note that, this application only for central usage. Not for distrbuted systems.
+ 
 ## Further help
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
 
