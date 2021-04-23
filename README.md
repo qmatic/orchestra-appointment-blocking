@@ -5,10 +5,10 @@ This is an Angular 11 application. Read more about Angular here: `https://angula
 This project uses ngrx/store to keep the application state. Read more here:
 `https://github.com/ngrx/platform`
 
-Or view this helpful tutorial to get some insight to working with ngrx and also understanding this application:
+Or view this helpful tutorial to get some insight to working with ngrx and understanding this application:
 `https://www.youtube.com/watch?v=N_UQx8dPPkc&list=PLW2eQOsUPlWJRfWGOi9gZdc3rE4Fke0Wv&index=1`
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.7.3.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.9.
 
 
 ## Getting Started
@@ -22,7 +22,7 @@ These instructions will help you get started running this project on your local 
 ## Prerequisites
 
 Make sure you have installed 
-1. Node 8 or above. `https://nodejs.org/`
+1. Node 11 or above. `https://nodejs.org/`
 2. gulp (after installing node `npm install gulp-cli`)
 
 
@@ -74,7 +74,7 @@ Run `npm run build-artifactory` to build the project. The build artifacts will b
 
 The build number is taken from `src/app.json`
 ## Deployment Guide
- ### Configuaration
+ ### Configuration
  * Add a record for application and application_modules table
 
     INSERT INTO qp_central.applications
@@ -94,8 +94,7 @@ module.appointmentblocking                       = Appointment Blocking
 
  * Copy "appointmentblocking.war" to the "custdeploy" folder of Orchestra and restart the service.
 
- Note that, this application only for central usage. Not for distrbuted systems.
- 
+ Note that, this application only for central usage. Not for distributed systems. Not work with Calendar Client(Calendar) application.
 ## Further help
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
 

@@ -77,6 +77,10 @@ export class BlockerEffects {
                 this.translateService.get('label.error.start.after.end').subscribe(
                   (label: string) => this.toastService.errorToast(`${label}`)
                 ).unsubscribe()
+              } else if (action.payload['responseData']['error']['code'] === 'error.cannot.create.appointment.past') {
+                this.translateService.get('label.error.start.before.now').subscribe(
+                  (label: string) => this.toastService.errorToast(`${label}`)
+                ).unsubscribe()
               } else {
                 this.toastService.errorToast(action.payload['responseData']['error']['msg'] as string)
               }
