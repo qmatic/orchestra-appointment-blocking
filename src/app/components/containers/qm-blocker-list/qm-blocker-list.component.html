@@ -5,7 +5,7 @@
         </mat-form-field> -->
         <div class="qm-blocking-list__main" [ngStyle]="{'height':dashboardRowCSSHeight}">
           <div class="mat-elevation-z8 qm-blocking-list__container" [ngClass]="{'qm-blocking-list__container__full' : blockerList === undefined || (blockerList && 6 > blockerList.length) }">
-            <table mat-table [dataSource]="dataSource" matSort class="qm-blocking-list__table">
+            <table mat-table [dataSource]="dataSource" matSort matSortActive="id" matSortDirection="desc" class="qm-blocking-list__table">
         
               <!-- ID Column -->
               <ng-container matColumnDef="id">
@@ -15,8 +15,14 @@
           
               <!-- Title Column -->
               <ng-container matColumnDef="title">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header> {{ 'table.blocker.field.title' | translate }} </th>
-                <td mat-cell *matCellDef="let row" style="width: 35%;"> {{row.title}} </td>
+                <th mat-header-cell *matHeaderCellDef mat-sort-header style="width: 20%;"> {{ 'table.blocker.field.title' | translate }} </th>
+                <td mat-cell *matCellDef="let row" style="width: 20%;"> {{row.title}} </td>
+              </ng-container>
+
+              <!-- Note Column -->
+              <ng-container matColumnDef="notes">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header style="width: 20%;"> {{ 'table.blocker.field.note' | translate }} </th>
+                <td mat-cell *matCellDef="let row" style="width: 20%;"> {{ row.notes }} </td>
               </ng-container>
           
               <!-- Branch Column -->
@@ -41,12 +47,6 @@
               <ng-container matColumnDef="created">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header> {{ 'table.blocker.field.created' | translate }} </th>
                 <td mat-cell *matCellDef="let row"> {{row.created | qmDateFormat : '' | async }} </td>
-              </ng-container>
-  
-              <!-- Updated Column -->
-              <ng-container matColumnDef="updated">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header> {{ 'table.blocker.field.updated' | translate }} </th>
-                <td mat-cell *matCellDef="let row"> {{row.updated | qmDateFormat : '' | async }} </td>
               </ng-container>
   
               <!-- Action Column -->

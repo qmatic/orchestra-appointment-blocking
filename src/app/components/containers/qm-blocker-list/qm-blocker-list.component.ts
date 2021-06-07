@@ -21,7 +21,7 @@ export class QmBlockerListComponent implements OnInit, OnDestroy {
 
   public userDirection: string;
 
-  displayedColumns: string[] = ['id', 'title', 'branch', 'start', 'end', 'created', 'updated', 'action'];
+  displayedColumns: string[] = ['id', 'title', 'notes', 'branch', 'start', 'end', 'created', 'action'];
   dataSource: MatTableDataSource<Object>;
 
   @ViewChild(MatPaginator) paginator: MatPaginator;

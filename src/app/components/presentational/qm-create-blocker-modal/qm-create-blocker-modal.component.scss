@@ -10,6 +10,16 @@
     }
 }
 
+.qm-form-footer-extend {
+  margin-top: rem(75px);
+}
+
+.qm-form-note {
+  height: rem(84px);
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  padding: 0.5rem 0.75rem;
+}
+
 .qm-clear-input-button {
     position: absolute;
 }
@@ -38,6 +48,10 @@
     &__select-extend {
         width: 60%;
     }
+}
+
+.qm-field-required-short {
+  width: 60%;
 }
 
 .qm-time-picker {

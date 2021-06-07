@@ -58,7 +58,8 @@
   <table class="qm-print-table__content">
     <tr class="qm-print-table__header">
       <th>{{ 'table.blocker.field.id' | translate }}</th>
-      <th>{{ 'table.blocker.field.title' | translate }}</th> 
+      <th style="max-width: 25%;">{{ 'table.blocker.field.title' | translate }}</th>
+      <th style="max-width: 25%;">{{ 'table.blocker.field.note' | translate }}</th>  
       <th>{{ 'table.blocker.field.branch' | translate }}</th>
       <th>{{ 'table.blocker.field.start' | translate }}</th>
       <th>{{ 'table.blocker.field.end' | translate }}</th> 
@@ -67,7 +68,8 @@
     </tr>
     <tr class="qm-print-table__data" *ngFor="let blocker of blockerListSource">
       <td>{{ blocker.id }}</td>
-      <td>{{ blocker.title }}</td>
+      <td style="max-width: 25%;">{{ blocker.title }}</td>
+      <td style="max-width: 25%;">{{ blocker.notes }}</td>
       <td>{{ blocker.branch ? blocker.branch.name : ('label.branch.global' | translate) }}</td>
       <td>{{ blocker.start | qmDateFormat : '' | async }}</td>
       <td>{{ blocker.end | qmDateFormat : '' | async }}</td>

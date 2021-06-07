@@ -33,7 +33,8 @@ export class BlockerDataService {
       'title': blocker.title,
       'allDay': 'false',
       'start': blocker.start,
-      'end': blocker.end
+      'end': blocker.end,
+      'notes': blocker.notes
     };
     if (blocker.branch) {
       reqBody['branch'] = { 'id': blocker.branch }

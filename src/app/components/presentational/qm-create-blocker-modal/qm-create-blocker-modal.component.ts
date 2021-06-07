@@ -157,6 +157,7 @@ export class QmCreateBlockerModalComponent implements OnInit, OnDestroy {
     const startDateObj = new Date(this.blockerData.start);
     const endDateObj = new Date(this.blockerData.end);
     this.createBlockerForm.controls['title'].setValue(this.blockerData.title);
+    this.createBlockerForm.controls['notes'].setValue(this.blockerData.notes);
     this.createBlockerForm.controls['branch'].setValue(this.blockerData.branch.id);
     this.createBlockerForm.controls['startDate'].setValue(startDateObj);
     this.createBlockerForm.controls['startTime'].setValue({hour : startDateObj.getHours(), minute : startDateObj.getMinutes()});
@@ -169,6 +170,7 @@ export class QmCreateBlockerModalComponent implements OnInit, OnDestroy {
 
     this.createBlockerForm = this.fb.group({
       title: ['', Validators.required, whiteSpaceValidator],
+      notes: [''],
       branch: ['', Validators.required],
       startDate: ['', Validators.required],
       startTime: ['', Validators.required],
@@ -190,6 +192,7 @@ export class QmCreateBlockerModalComponent implements OnInit, OnDestroy {
   
     let blockItem = {
       title : formModel.title as string,
+      notes : formModel.notes as string,
       branch : formModel.branch,
       start : startDateObj + 'T' + 
       (formModel.startTime.hour < 10 ? ('0' + formModel.startTime.hour) : formModel.startTime.hour) + ':' + 
@@ -204,6 +207,7 @@ export class QmCreateBlockerModalComponent implements OnInit, OnDestroy {
       delete newBlockerObj['resource'];
       
       newBlockerObj.title = formModel.title as string;
+      newBlockerObj.notes = formModel.notes as string;
       newBlockerObj.branch = formModel.branch;
       newBlockerObj.start = startDateObj + 'T' + 
         (formModel.startTime.hour < 10 ? ('0' + formModel.startTime.hour) : formModel.startTime.hour) + ':' + 
@@ -227,6 +231,9 @@ export class QmCreateBlockerModalComponent implements OnInit, OnDestroy {
 
   get title() {
     return this.createBlockerForm.get('title');
+  }
+  get notes() {
+    return this.createBlockerForm.get('notes');
   }
   get branch() {
     return this.createBlockerForm.get('branch');
