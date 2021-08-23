@@ -50,6 +50,10 @@ export class QmDashboardComponent implements OnInit, OnDestroy {
     const blockerListSubscription = this.blockerSelectors.blockers$.subscribe(
       (list: IBlocker[]) => {
         this.blockerListSource = list;
+        var searchField = document.getElementById('blockerSearch') as HTMLInputElement;
+        if (searchField) {
+          searchField.value = '';
+        }
         if (list.length === 0 && this.isLoaded) {
           this.openCreateBlocker(true);
         }

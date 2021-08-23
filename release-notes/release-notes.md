@@ -39,6 +39,46 @@ This document describes the new features, bug corrections, known issues and reco
 
 ------------>
 
+<h2>Update 2.0.0.4 </h2>
+
+**Date: 17/8/2021**
+ 
+**Build number: 4**
+
+<h3>Stories</h3>
+
+| **Id** | **Release notes** |
+| --- | --- |
+| **ABL-10** | **Add notes field to blocking ability** |
+| **ABL-59** | **Improve the whole day block usability** |
+| **ABL-60** | **Clear search filter when a new record being added** |
+
+<h3>Upgrade Instructions</h3>
+- Please use following SQL queries to insert db record 
+
+* MS SQL/Postgre SQL
+
+INSERT INTO qp_central.applications
+     (id,branch_app,is_distributed,enabled,icon_url,url,version,view_index)
+     VALUES('appointmentblocking',true,false,1,'images/icons/application.png','appointmentblocking',1,120)
+
+INSERT INTO qp_central.application_modules     
+    (id,is_distributed,enabled,icon_url,privilege_level,url,view_index,application_id)
+     VALUES ('appointmentblocking',0,1,NULL,20,NULL,110,'appointmentblocking')
+
+* Orcle
+
+INSERT INTO applications
+     (id,branch_app,is_distributed,enabled,icon_url,url,version,view_index)
+     VALUES('appointmentblocking',1,0,1,'images/icons/application.png','appointmentblocking',1,120);
+
+
+INSERT INTO application_modules     
+     (id,is_distributed,enabled,icon_url,privilege_level,url,view_index,application_id)
+     VALUES ('appointmentblocking',0,1,NULL,20,NULL,110,'appointmentblocking');
+
+----------
+
 <h2>Update 2.0.0.3 </h2>
 
 **Date: 21/4/2021**

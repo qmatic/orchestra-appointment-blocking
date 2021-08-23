@@ -77,6 +77,8 @@ The build number is taken from `src/app.json`
  ### Configuration
  * Add a record for application and application_modules table
 
+    *  MS SQL/Postgre SQL
+
     INSERT INTO qp_central.applications
     (id,branch_app,is_distributed,enabled,icon_url,url,version,view_index)
     VALUES('appointmentblocking',true,false,1,'images/icons/application.png','appointmentblocking',1,120)
@@ -84,6 +86,17 @@ The build number is taken from `src/app.json`
     INSERT INTO qp_central.application_modules     
      (id,is_distributed,enabled,icon_url,privilege_level,url,view_index,application_id)
      VALUES ('appointmentblocking',0,1,NULL,20,NULL,110,'appointmentblocking')
+
+    * Oracle
+
+    INSERT INTO applications
+           (id,branch_app,is_distributed,enabled,icon_url,url,version,view_index)
+     VALUES('appointmentblocking',1,0,1,'images/icons/application.png','appointmentblocking',1,120);
+
+
+    INSERT INTO application_modules     
+           (id,is_distributed,enabled,icon_url,privilege_level,url,view_index,application_id)
+     VALUES ('appointmentblocking',0,1,NULL,20,NULL,110,'appointmentblocking');
 
  * Add new section to commonMessages.properties 
 application.appointmentblocking                  = Appointment Blocking

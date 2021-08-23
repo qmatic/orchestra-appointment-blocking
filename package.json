@@ -1,7 +1,7 @@
 {
   "name": "appointment-blocking",
   "version": "2.0.0",
-  "build": "4",
+  "build": "4-internal",
   "license": "MIT",
   "scripts": {
     "start": "npm run ng-config-dev && ng serve --host 0.0.0.0 --proxy-config proxy.config.json",

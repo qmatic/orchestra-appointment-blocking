@@ -182,6 +182,14 @@ export class QmCreateBlockerModalComponent implements OnInit, OnDestroy {
   onDateChange() {
     const formModel = this.createBlockerForm.value;
     this.minEndDate = formModel.startDate;
+    let dateNow = new Date();
+    if (formModel.startDate.format('YYYY-MM-DD') !== moment(dateNow).format('YYYY-MM-DD')) {
+      this.createBlockerForm.controls['startTime'].setValue({hour : 0, minute : 0});
+      this.createBlockerForm.controls['endTime'].setValue({hour : 23, minute : 59});
+    } else {
+      this.createBlockerForm.controls['startTime'].setValue({hour : dateNow.getHours(), minute : dateNow.getMinutes()});
+      this.createBlockerForm.controls['endTime'].setValue({hour : 23, minute : 59});
+    }
   }
 
 // Submitting
@@ -204,7 +212,6 @@ export class QmCreateBlockerModalComponent implements OnInit, OnDestroy {
 
     if (this.blockerData) {
       let newBlockerObj = JSON.parse(JSON.stringify(this.blockerData));
-      delete newBlockerObj['resource'];
       
       newBlockerObj.title = formModel.title as string;
       newBlockerObj.notes = formModel.notes as string;
