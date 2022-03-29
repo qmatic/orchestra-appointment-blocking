@@ -6,6 +6,7 @@ var fs = require('fs');
 const del = require('del');
 var sftp = require('gulp-sftp');
 var ncmd = require('node-cmd');
+const { exit } = require('process');
 
 require('events').EventEmitter.prototype._maxListeners = 100;
 
@@ -134,7 +135,8 @@ function writeManifest(done) {
     if (versionInfo) {
       var fileContent = 'Build-Date: ' + new Date().toISOString().substring(0, 10) + '\r\n';
       fileContent += 'Product-Name: Appointment Blocking' + '\r\n';
-      fileContent += 'Build-Version: ' + versionInfo.version + '\r\n';
+      fileContent += 'Build-Version: ' + versionInfo.versionPrefix + '\r\n';
+      console.log(fileContent)
       fs.writeFileSync('./src/META-INF/MANIFEST.MF', fileContent);
       done();
       return true;
@@ -149,35 +151,45 @@ function writeManifest(done) {
 }
 exports.writeManifest = writeManifest;
 
+function setLangFiles(done, isReset) {
+  fs.readdirSync('./src/assets/i18n').forEach(file => {
+    if(isReset){
+      resetAppVersionInFile('./src/assets/i18n/' + file, true, done);
+    } else {
+      setAppVersionInFile('./src/assets/i18n/' + file, true, done);
+    }
+  });
+}
+
 // Set app version ***************************************
 
 function setAppVersion(done) {
-  try {
-    var pageData = fs.readFileSync('./src/app/components/presentational/qm-page-footer/qm-page-footer.component.html');
-    var versionInfo = getVersionInfo();
-    if (versionInfo && pageData) {
-      pageData = pageData.toString().replace('%APP_VERSION%', ' (Appointment Blocking ' + versionInfo.version + ') ');
-      fs.writeFileSync('./src/app/components/presentational/qm-page-footer/qm-page-footer.component.html', pageData);
-      done();
-      return true;
-    }
-  } catch (ex) {
-    console.log(
-      'There was an exception when trying to read the property file or package.json - ' + ex
-    );
-    done();
-    return false;
-  }
+  setAppVersionInFile('./src/app/components/presentational/qm-page-footer/qm-page-footer.component.html', false, done);
+  setLangFiles(done, false);
 }
 exports.setAppVersion = setAppVersion;
 
 function resetAppVersion(done) {
+  resetAppVersionInFile('./src/app/components/presentational/qm-page-footer/qm-page-footer.component.html', false, done);
+  setLangFiles(done, true);
+}
+exports.resetAppVersion = resetAppVersion;
+
+function setAppVersionInFile(location, versionOnly, done) {
   try {
-    var pageData = fs.readFileSync('./src/app/components/presentational/qm-page-footer/qm-page-footer.component.html');
+    var pageData = fs.readFileSync(location);
     var versionInfo = getVersionInfo();
     if (versionInfo && pageData) {
-      pageData = pageData.toString().replace(' (Appointment Blocking ' + versionInfo.version + ') ' ,'%APP_VERSION%');
-      fs.writeFileSync('./src/app/components/presentational/qm-page-footer/qm-page-footer.component.html', pageData);
+      var title = ' (Appointment Blocking ' + versionInfo.version + ') ';
+      if (versionOnly){
+        title = 'Version ' + versionInfo.versionPrefix;
+      }
+      if (pageData.toString().indexOf('%APP_VERSION%') == -1) {
+        console.log('Please recheck the app version in the appropriate places');
+        exit();
+      }
+      pageData = pageData.toString().replace('%APP_VERSION%', title);
+      fs.writeFileSync(location, pageData);
       done();
       return true;
     }
@@ -189,7 +201,29 @@ function resetAppVersion(done) {
     return false;
   }
 }
-exports.resetAppVersion = resetAppVersion;
+
+function resetAppVersionInFile(location, versionOnly, done) {
+  try {
+    var pageData = fs.readFileSync(location);
+    var versionInfo = getVersionInfo();
+    if (versionInfo && pageData) {
+      var title = ' (Appointment Blocking ' + versionInfo.version + ') ';
+      if (versionOnly){
+        title = 'Version ' + versionInfo.versionPrefix;
+      }
+      pageData = pageData.toString().replace(title ,'%APP_VERSION%');
+      fs.writeFileSync(location, pageData);
+      done();
+      return true;
+    }
+  } catch (ex) {
+    console.log(
+      'There was an exception when trying to read the property file or package.json - ' + ex
+    );
+    done();
+    return false;
+  }
+}
 
 
 function getVersionInfo() {
